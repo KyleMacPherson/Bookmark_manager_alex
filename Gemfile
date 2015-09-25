@@ -17,4 +17,5 @@ gem 'rspec'
 gem 'capybara'
 gem 'byebug'
 gem 'pry'
+gem 'factory_girl'
 end
