@@ -29,6 +29,13 @@ feature 'User sign up' do
     click_button 'Sign up'
   end
 
+  scenario 'cannot sign up with existing email' do
+    user = build(:user)
+    sign_up_as(user)
+    expect { sign_up_as(user)}.to change(User, :count).by(0)
+    expect(page).to have_content('Email is already taken')
+  end
+
 
   # def sign_up(email: 'alice@example.com',
   #         password: '12345678',
@@ -40,7 +47,7 @@ feature 'User sign up' do
   #   click_button 'Sign up'
   # end
 
- 
+
   # def sign_up(email: 'alice@example.com',
   #         password: 'oranges!')
   #         visit '/users/new'
